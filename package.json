@@ -1,0 +1,21 @@
+{
+  "name": "typedoc-unhoax-theme",
+  "version": "0.27.0",
+  "description": "TypeDoc theme to unhoax me-self",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "debug": "npm run build && cd example && npx typedoc && cd ..",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^22.10.1",
+    "prettier": "^3.4.2",
+    "typescript": "^5.7.2"
+  },
+  "peerDependencies": {
+    "typedoc": "^0.27.3"
+  }
+}

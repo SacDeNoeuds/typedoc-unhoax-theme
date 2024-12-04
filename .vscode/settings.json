@@ -1,0 +1,16 @@
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "prettier.configPath": ".prettierrc",
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "never"
+  },
+  "cSpell.words": [
+    "Unhoax"
+  ],
+  "notebook.defaultFormatter": "esbenp.prettier-vscode",
+  "javascript.format.enable": true,
+  "typescript.format.enable": true,
+  "prettier.prettierPath": "./node_modules/prettier",
+  "html-css-class-completion.includeGlobPattern": "./src/assets/*.{css,html}",
+}
