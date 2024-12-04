@@ -1,15 +1,25 @@
 {
   "name": "typedoc-unhoax-theme",
-  "version": "0.27.0",
+  "version": "0.1.0",
   "description": "TypeDoc theme to unhoax me-self",
   "type": "module",
+  "files": [
+    "lib"
+  ],
+  "main": "lib/index.js",
+  "module": "lib/index.js",
   "scripts": {
     "build": "tsc",
     "debug": "npm run build && cd example && npx typedoc && cd ..",
+    "prepack": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "SacDeNoeuds <sacdenoeuds.dev@gmail.com>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SacDeNoeuds/typedoc-unhoax-theme"
+  },
   "devDependencies": {
     "@types/node": "^22.10.1",
     "prettier": "^3.4.2",
