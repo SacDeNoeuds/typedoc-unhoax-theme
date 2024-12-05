@@ -1,0 +1,11 @@
+{
+  "name": "typedoc-example-ddd",
+  "version": "0.0.0",
+  "private": true,
+  "description": "An example of using the TypeDoc documentation generator.",
+  "license": "MIT",
+  "author": "SacDeNoeuds <sacdenoeuds.dev@gmail.com>",
+  "devDependencies": {
+    "typescript": "^5.4.5"
+  }
+}
