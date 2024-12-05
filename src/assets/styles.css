@@ -175,6 +175,7 @@
 
 @layer layout {
   .page-layout {
+    min-block-size: 83dvb;
     display: grid;
     grid-template-areas: "aside-left main aside-right";
     grid-template-columns: 25% 50% 25%;
@@ -477,6 +478,12 @@
   .tsd-anchor-icon {
     display: none;
     color: var(--color-text);
+  }
+
+  .tsd-tag-example {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-s)
   }
 
   .tsd-tag {

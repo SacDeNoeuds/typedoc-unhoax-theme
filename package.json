@@ -4,12 +4,14 @@
   "description": "TypeDoc theme to unhoax me-self",
   "type": "module",
   "files": [
-    "lib"
+    "lib",
+    "src/assets"
   ],
   "main": "lib/index.js",
   "module": "lib/index.js",
   "scripts": {
-    "build": "tsc",
+    "prebuild": "rm -rf ./lib",
+    "build": "tsc -P tsconfig.json",
     "debug": "npm run build && cd example && npx typedoc && cd ..",
     "prepack": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"

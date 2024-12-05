@@ -181,7 +181,7 @@ export class UnhoaxThemeContext extends DefaultThemeRenderContext {
     return (
       <div class='page-content-header'>
         {renderBreadcrumbs && <ul class='breadcrumb'>{this.breadcrumb(props.model)}</ul>}
-        {renderTitle && <h1>{props.model.getFullName()}</h1>}
+        {renderTitle && <h1>{props.model.name}</h1>}
       </div>
     )
   }
