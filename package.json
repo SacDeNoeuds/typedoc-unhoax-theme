@@ -12,9 +12,9 @@
   "scripts": {
     "prebuild": "rm -rf ./lib",
     "build": "tsc -P tsconfig.json",
-    "debug": "npm run build && cd example && npx typedoc && cd ..",
-    "prepack": "npm run build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "debug": "npm run build && npm run build-examples",
+    "build-examples": "cd example && npx typedoc && cd ../example-ddd && npx typedoc && cd ..",
+    "prepack": "npm run build"
   },
   "author": "SacDeNoeuds <sacdenoeuds.dev@gmail.com>",
   "license": "MIT",
