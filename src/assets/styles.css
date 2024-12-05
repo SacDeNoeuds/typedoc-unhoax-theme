@@ -465,6 +465,10 @@
       gap: var(--space-s);
     }
   }
+
+  .deprecated {
+    text-decoration: line-through;
+  }
 }
 
 @layer typedoc {
@@ -472,6 +476,13 @@
     display: flex;
     align-items: center;
     gap: var(--space-m);
+    position: relative;
+
+    & .tsd-anchor {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
 
     &:hover .tsd-anchor-icon { display: flex; }
   }
@@ -554,4 +565,19 @@
   .tsd-kind-interface { color: var(--green); }
   .tsd-kind-property, .tsd-kind-type-parameter { color: var(--yellow); }
   .tsd-signature-type { font-style: italic; }
+
+  .tsd-signature {
+    position: relative;
+    border: var(--border-thick-size) solid var(--border-grey);
+    border-radius: var(--radius);
+    padding: var(--space-m);
+    max-inline-size: 100%;
+    overflow-x: auto;
+    scrollbar-width: thin;
+  }
+  .tsd-index-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
 }
