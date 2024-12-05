@@ -1,6 +1,6 @@
 {
   "name": "typedoc-unhoax-theme",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "TypeDoc theme to unhoax me-self",
   "type": "module",
   "files": [
