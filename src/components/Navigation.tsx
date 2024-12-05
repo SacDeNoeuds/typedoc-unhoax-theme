@@ -1,55 +1,44 @@
-import {
-  DefaultThemeRenderContext,
-  JSX,
-  NavigationElement,
-  PageEvent,
-  Reflection,
-  ReflectionKind,
-} from 'typedoc'
+import { JSX, NavigationElement, PageEvent, Reflection, ReflectionKind } from 'typedoc'
 import { UnhoaxThemeContext } from '../ThemeContext.js'
 import { ChevronDownIcon } from '../icons/chevron-down.js'
 import { KindIcon } from './KindIcon.js'
 
-type CustomIcons = Partial<DefaultThemeRenderContext['icons']>
-
-export function Navigation(props: {
-  projectName: string
-  basePath: string
+type Props = {
+  context: UnhoaxThemeContext
   currentUrl: string
-  urlToProject: string
-  elements: NavigationElement[]
-  customIcons: CustomIcons
-}): JSX.Element {
-  // const projectIsCurrentPage = props.project === props.model
-  const projectIsCurrentPage = props.currentUrl === props.urlToProject
+  props: PageEvent<Reflection>
+}
+export function Navigation({ context, currentUrl, props }: Props): JSX.Element {
+  const basePath = context.options.getValue('basePath') || '/'
+  const urlToProject = context.urlTo(props.project)
+  const projectIsCurrentPage = currentUrl === urlToProject
+  const elements = context.getNavigation()
   return (
     <nav class='project-nav'>
       <a
-        href={props.urlToProject}
-        class={['nav-leaf', projectIsCurrentPage ? 'is-active' : undefined]
-          .filter(Boolean)
-          .join(' ')}
+        href={urlToProject}
+        class={['nav-leaf', projectIsCurrentPage ? 'is-active' : undefined].filter(Boolean).join(' ')}
       >
-        {props.projectName}
+        Modules
       </a>
-      <ul class='nav-tree'>{props.elements.map(navTreeItem)}</ul>
+      <ul class='nav-tree'>{elements.map(navTreeItem)}</ul>
     </nav>
   )
 
   function navTreeItem(element: NavigationElement) {
     return element.children ? (
       <NavTreeItem
-        defaultOpened={hasOpenedElement(element, props.currentUrl)}
+        defaultOpened={hasOpenedElement(element, currentUrl)}
         text={element.text}
         children={element.children.map(navTreeItem)}
       />
     ) : (
       <NavTreeLeaf
-        customIcons={props.customIcons}
-        isActive={props.currentUrl === element.path}
+        customIcons={context.customIcons}
+        isActive={currentUrl === element.path}
         text={element.text}
         kind={element.kind}
-        link={element.path && props.basePath + element.path}
+        link={element.path && context.relativeURL(element.path)}
       />
     )
   }
@@ -81,7 +70,7 @@ export function NavTreeItem(props: NavTreeItemProps) {
 type NavTreeLeafProps = {
   class?: string
   kind?: ReflectionKind
-  customIcons: CustomIcons
+  customIcons: UnhoaxThemeContext['customIcons']
   isActive: boolean
   link?: string
   text: string
@@ -94,13 +83,7 @@ export function NavTreeLeaf(props: NavTreeLeafProps) {
       <KindIcon kind={props.kind} />
     </small>
   )
-  const className = [
-    props.class,
-    'nav-leaf',
-    props.isActive ? 'is-active' : undefined,
-  ]
-    .filter(Boolean)
-    .join(' ')
+  const className = [props.class, 'nav-leaf', props.isActive ? 'is-active' : undefined].filter(Boolean).join(' ')
 
   return (
     <li>
@@ -125,8 +108,5 @@ export function NavTreeLeaf(props: NavTreeLeafProps) {
 }
 
 function hasOpenedElement(element: NavigationElement, url: string): boolean {
-  return (
-    element.path === url ||
-    !!element.children?.some((element) => hasOpenedElement(element, url))
-  )
+  return element.path === url || !!element.children?.some((element) => hasOpenedElement(element, url))
 }

@@ -88,12 +88,9 @@ export class UnhoaxThemeContext extends DefaultThemeRenderContext {
   override navigation = (props: PageEvent<Reflection>): JSX.Element => {
     return (
       <Navigation
-        basePath={this.options.getValue('basePath') || '/'}
+        context={this}
         currentUrl={props.url}
-        customIcons={this.customIcons}
-        elements={this.getNavigation()}
-        projectName={this.projectDisplayName}
-        urlToProject={this.urlTo(props.project)}
+        props={props}
       />
     )
   }
