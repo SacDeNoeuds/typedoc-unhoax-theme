@@ -13,7 +13,9 @@
     "prebuild": "rm -rf ./lib",
     "build": "tsc -P tsconfig.json",
     "debug": "npm run build && npm run build-examples",
-    "build-examples": "cd example && npx typedoc && cd ../example-ddd && npx typedoc && cd ..",
+    "build-example:typedoc-default": "cd examples/typedoc-default && npx typedoc && cd ../..",
+    "build-example:ddd": "cd examples/ddd && npx typedoc && cd ../..",
+    "build-examples": "npm run build-example:typedoc-default && npm run build-example:ddd",
     "prepack": "npm run build"
   },
   "author": "SacDeNoeuds <sacdenoeuds.dev@gmail.com>",
