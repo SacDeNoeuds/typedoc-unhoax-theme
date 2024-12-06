@@ -198,8 +198,13 @@
 }
 
 @layer layout {
+  body {
+    min-block-size: 100vh;
+    display: grid;
+    grid-template-rows: min-content 1fr min-content;
+  }
+
   .page-layout {
-    min-block-size: 83dvb;
     display: grid;
     grid-template-areas: "aside-left main aside-right";
     grid-template-columns: 25% 50% 25%;
