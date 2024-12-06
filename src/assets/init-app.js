@@ -1,10 +1,15 @@
+import { initPageContentNavFromHeadings } from './init-page-content-nav.js'
+
 function initTheme() {
   const root = document.documentElement
   const select = document.getElementById('theme-select')
-  const preferredScheme =
-    window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+  const preferredScheme = window.matchMedia('(prefers-color-scheme: dark)')
+    .matches
+    ? 'dark'
+    : 'light'
 
-  root.dataset.theme = select.value = localStorage.getItem('typedoc-theme') || preferredScheme
+  root.dataset.theme = select.value =
+    localStorage.getItem('typedoc-theme') || preferredScheme
 
   select.onchange = () => {
     root.dataset.theme = select.value
@@ -32,6 +37,7 @@ function listenToCopyButtonClicks() {
 function main() {
   initTheme()
   listenToCopyButtonClicks()
+  initPageContentNavFromHeadings()
 }
 
 main()

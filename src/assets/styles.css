@@ -135,7 +135,7 @@
     align-items: center;
     justify-content: space-between;
     gap: var(--space-s);
-    margin-bottom: var(--space-m);
+    margin-bottom: var(--space-y, var(--space-s));
 
     &::marker { content: none; }
   }
@@ -294,6 +294,23 @@
   :where(.page-content :not(.page-content-header)) {
     ul, ol { padding-inline-start: 1em; }
     ul { list-style: disc; }
+  }
+
+  .page-content-nav {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-m);
+  }
+  .page-content-nav .nav-tree {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+  .page-content-anchor-link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-s);
+    text-decoration: none;
   }
 }
 
@@ -474,7 +491,12 @@
     & section {
       display: flex;
       flex-direction: column;
-      gap: var(--space-m);
+      gap: var(--space-y, var(--space-m));
+
+      & details > section { --space-y: var(--space-s); }
+      & details > section + section {
+        margin-block-start: var(--space-m);
+      }
     }
   }
 }

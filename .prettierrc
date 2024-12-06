@@ -11,5 +11,13 @@
   "useTabs": false,
   "singleQuote": true,
   "trailingComma": "all",
-  "quoteProps": "consistent"
+  "quoteProps": "consistent",
+  "overrides": [
+    {
+      "files": "src/assets/*",
+      "options": {
+        "printWidth": 80
+      }
+    }
+  ]
 }

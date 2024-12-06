@@ -36,6 +36,7 @@ const config = {
     html: true,
   },
   suppressCommentWarningsInDeclarationFiles: true,
+  typePrintWidth: 60,
 }
 
 export default config

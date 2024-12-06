@@ -4,9 +4,9 @@ import { UnhoaxThemeContext } from '../ThemeContext.js'
 type Props = {
   context: UnhoaxThemeContext
   template: RenderTemplate<PageEvent<Reflection>>
-  pageEvent: PageEvent<Reflection>
+  props: PageEvent<Reflection>
 }
-export function Html({ context, template, pageEvent }: Props) {
+export function Html({ context, template, props }: Props) {
   const favicon = context.options.getValue('favicon')
   return (
     <html lang={context.options.getValue('lang')}>
@@ -25,9 +25,7 @@ export function Html({ context, template, pageEvent }: Props) {
           http-equiv='x-ua-compatible'
           content='IE=edge'
         />
-        <title>
-          {pageEvent.model.isProject() ? context.projectDisplayName : pageEvent.model.getFriendlyFullName()}
-        </title>
+        <title>{props.model.isProject() ? context.projectDisplayName : props.model.getFriendlyFullName()}</title>
         {favicon && (
           <link
             rel='icon'
@@ -55,11 +53,7 @@ export function Html({ context, template, pageEvent }: Props) {
       </head>
       <body>
         {context.hook('body.begin', context)}
-        <script
-          type='module'
-          src={context.relativeURL('assets/init-app.js', true)}
-        />
-        {context.toolbar(context.page)}
+        {context.toolbar(props)}
 
         <input
           id='mobile-nav-opened'
@@ -69,20 +63,20 @@ export function Html({ context, template, pageEvent }: Props) {
         <div class='page-layout'>
           <aside class='site-nav'>
             {context.hook('sidebar.begin', context)}
-            {context.sidebar(context.page)}
+            {context.sidebar(props)}
             {context.hook('sidebar.end', context)}
           </aside>
 
           <aside class='page-content-nav'>
             {context.hook('pageSidebar.begin', context)}
-            {context.pageSidebar(context.page)}
+            {context.pageSidebar(props)}
             {context.hook('pageSidebar.end', context)}
           </aside>
 
           <main class='page-content'>
             {context.hook('content.begin', context)}
-            {context.header(context.page)}
-            {template(context.page)}
+            {context.header(props)}
+            {template(props)}
             {context.hook('content.end', context)}
           </main>
         </div>
@@ -92,11 +86,15 @@ export function Html({ context, template, pageEvent }: Props) {
         {context.hook('body.end', context)}
 
         <script
+          type='module'
+          src={context.relativeURL('assets/init-app.js', true)}
+        />
+        {/* <script
           defer
           async
           type='module'
           src={context.relativeURL('assets/element/drop-down.js', true)}
-        />
+        /> */}
       </body>
     </html>
   )

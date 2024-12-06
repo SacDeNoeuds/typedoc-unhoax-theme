@@ -61,7 +61,7 @@ export class UnhoaxThemeContext extends DefaultThemeRenderContext {
       <Html
         context={this}
         template={template}
-        pageEvent={props}
+        props={props}
       />
     )
   }

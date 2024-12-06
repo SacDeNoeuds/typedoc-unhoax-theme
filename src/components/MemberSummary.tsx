@@ -17,10 +17,8 @@ type Props = {
 
 export function MemberSummary({ context, member }: Props) {
   const targetElementId = context.slugger.slug(member.name)
-  const target =
-    member instanceof ReferenceReflection
-      ? member.getTargetReflectionDeep()
-      : undefined
+  const target = member instanceof ReferenceReflection ? member.getTargetReflectionDeep() : undefined
+
   context.page.pageHeadings.push({
     link: `#${targetElementId}`,
     text: member.getFriendlyFullName(),
@@ -80,9 +78,7 @@ function ReferenceMemberName({
   return (
     <span class='member-summary-name'>
       {context.icons[target.kind]()}
-      <span class={member.isDeprecated() ? 'deprecated' : undefined}>
-        {member.name}
-      </span>
+      <span class={member.isDeprecated() ? 'deprecated' : undefined}>{member.name}</span>
       <span>&nbsp;{'\u2192'}&nbsp;</span>
       {target.getFriendlyFullName()}
       <AnchorIconLink

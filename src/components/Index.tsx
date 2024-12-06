@@ -14,7 +14,9 @@ function renderCategory(context: UnhoaxThemeContext, item: ReflectionCategory | 
         {item.children.map((item) => (
           <a
             href={context.urlTo(item)}
-            class={['tsd-index-link', item.isDeprecated() && 'deprecated', context.getReflectionClasses(item)].filter(Boolean).join(' ')}
+            class={['tsd-index-link', item.isDeprecated() && 'deprecated', context.getReflectionClasses(item)]
+              .filter(Boolean)
+              .join(' ')}
           >
             <span>{item.getFriendlyFullName()}</span>
           </a>
@@ -35,7 +37,9 @@ export function Index({ context, props }: Props) {
   let content: JSX.Element | JSX.Element[] = categories.length
     ? categories.map((item) => renderCategory(context, item))
     : groups.flatMap((item) => {
-        return item.categories ? item.categories.map((item2) => renderCategory(context, item2, item.title)) : renderCategory(context, item)
+        return item.categories
+          ? item.categories.map((item2) => renderCategory(context, item2, item.title))
+          : renderCategory(context, item)
       })
 
   // Accordion is only needed if any children don't have their own document.
@@ -43,10 +47,10 @@ export function Index({ context, props }: Props) {
   content = shouldWrapInAccordion ? (
     <details open>
       <summary>
-        <h3 class='with-chevron'>
+        <h2 class='with-chevron'>
           {context.i18n.theme_index()}
           {context.icons.chevronDown()}
-        </h3>
+        </h2>
       </summary>
       {content}
     </details>
