@@ -76,7 +76,7 @@ export class UnhoaxThemeContext extends DefaultThemeRenderContext {
     return (
       <footer class='page-footer'>
         {this.hook('footer.begin', this)}
-        Built with TypeDoc with the Unhoax Theme 🤓 – Copyright {new Date().getFullYear()}
+        Built with TypeDoc with the Unhoax Theme 🤓&nbsp;–&nbsp;Copyright {new Date().getFullYear()}
         {this.hook('footer.end', this)}
       </footer>
     )

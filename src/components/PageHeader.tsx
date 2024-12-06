@@ -43,8 +43,8 @@ export function PageHeader({ context }: Props) {
         </div>
 
         <label
-          for='site-nav-opened'
-          class='site-nav-burger-trigger'
+          for='mobile-nav-opened'
+          class='mobile-nav-burger-trigger'
           aria-label={context.i18n.theme_menu()}
         >
           {context.icons.menu()}

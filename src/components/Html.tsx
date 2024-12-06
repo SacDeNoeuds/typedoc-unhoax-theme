@@ -25,7 +25,9 @@ export function Html({ context, template, pageEvent }: Props) {
           http-equiv='x-ua-compatible'
           content='IE=edge'
         />
-        <title>{pageEvent.model.isProject() ? context.projectDisplayName : pageEvent.model.getFriendlyFullName()}</title>
+        <title>
+          {pageEvent.model.isProject() ? context.projectDisplayName : pageEvent.model.getFriendlyFullName()}
+        </title>
         {favicon && (
           <link
             rel='icon'
@@ -59,12 +61,12 @@ export function Html({ context, template, pageEvent }: Props) {
         />
         {context.toolbar(context.page)}
 
+        <input
+          id='mobile-nav-opened'
+          type='checkbox'
+          hidden
+        />
         <div class='page-layout'>
-          <input
-            id='site-nav-opened'
-            type='checkbox'
-            hidden
-          />
           <aside class='site-nav'>
             {context.hook('sidebar.begin', context)}
             {context.sidebar(context.page)}

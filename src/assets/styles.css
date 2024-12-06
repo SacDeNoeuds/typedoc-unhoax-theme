@@ -202,16 +202,19 @@
     min-block-size: 100vh;
     display: grid;
     grid-template-rows: min-content 1fr min-content;
+    grid-template-columns: 98vi;
+    /* max-inline-size: 100vi; */
+    /* overflow-x: hidden; */
   }
 
   .page-layout {
     display: grid;
-    grid-template-areas: "aside-left main aside-right";
+    grid-template-areas: "site-nav main page-nav";
     grid-template-columns: 25% 50% 25%;
 
     & > * { padding: var(--space-l); }
-    & .site-nav { grid-area: aside-left; }
-    & .page-content-nav { grid-area: aside-right; }
+    & .site-nav { grid-area: site-nav; }
+    & .page-content-nav { grid-area: page-nav; }
     & .page-content { grid-area: main; }
   }
 
@@ -236,7 +239,7 @@
       gap: var(--space-m);
     }
   
-    & .site-nav-burger-trigger { display: none; }
+    & .mobile-nav-burger-trigger { display: none; }
   
     & .header-nav-links a {
       display: inline-block;
@@ -244,19 +247,45 @@
     }
   }
 
+  @media (width < 1000px) {
+    .page-layout {
+      grid-template-areas:
+        "site-nav main"
+        "page-nav main";
+      grid-template-columns: min-content minmax(0, 1fr);
+      grid-template-rows: min-content 1fr;
+    }
+  }
+  
   @media (width < 600px) {
     /* Idk yet. */
-    .page-header .site-nav-burger-trigger {
+    .page-header .mobile-nav-burger-trigger {
       display: flex;
       align-items: center;
     }
     .page-layout {
       grid-template-areas:
-        'main aside-right'
-        'main aside-left';
-      grid-template-columns: 100dvi min-content;
-      max-inline-size: 100dvi;
+        'main page-nav'
+        'main site-nav';
+      grid-template-columns: 100vi 90vi;
+      grid-template-rows: min-content 1fr;
+      max-inline-size: 100vi;
       overflow-x: clip;
+    }
+    .page-content-nav, .site-nav {
+      background: var(--color-background);
+      position: relative;
+      z-index: 100;
+    }
+    #mobile-nav-opened:checked + .page-layout {
+      & .page-content {
+        filter: blur(1px) opacity(0.75) brightness(80%);
+        background: var(--color-background);
+      }
+
+      & .page-content-nav, & .site-nav {
+        transform: translateX(-100%);
+      }
     }
   }
 }
@@ -401,6 +430,7 @@
     align-items: center;
     justify-content: center;
     padding: var(--space-l);
+    text-align: center;
   }
 }
 
@@ -415,6 +445,7 @@
 @layer {
   .breadcrumb {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     list-style: none;
     margin-inline-start: calc(-1 * var(--space-m));
