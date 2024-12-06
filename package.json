@@ -16,6 +16,9 @@
     "build-example:typedoc-default": "cd examples/typedoc-default && npx typedoc && cd ../..",
     "build-example:ddd": "cd examples/ddd && npx typedoc && cd ../..",
     "build-examples": "npm run build-example:typedoc-default && npm run build-example:ddd",
+    "install-example:typedoc-default": "cd examples/typedoc-default && npm ci && cd ../..",
+    "install-example:ddd": "cd examples/ddd && npm ci && cd ../..",
+    "install-examples": "npm run install-example:typedoc-default && npm run install-example:ddd",
     "prepack": "npm run build"
   },
   "author": "SacDeNoeuds <sacdenoeuds.dev@gmail.com>",
