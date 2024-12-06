@@ -16,7 +16,7 @@ There is no particular configuration for this plugin, it is mainly a theme.
 
 ## Examples
 
-I added the default [TypeDoc Example](https://sacdenoeuds.github.io/typedoc-unhoax-theme/example/) and another one of my own [here](https://sacdenoeuds.github.io/typedoc-unhoax-theme/example-ddd/).
+I added the default [TypeDoc Example](https://sacdenoeuds.github.io/typedoc-unhoax-theme/typedoc-default/) and another one of my own [here](https://sacdenoeuds.github.io/typedoc-unhoax-theme/ddd/).
 
 ## Contributing
 
