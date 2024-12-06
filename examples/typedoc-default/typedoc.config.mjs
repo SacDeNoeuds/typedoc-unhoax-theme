@@ -1,17 +1,22 @@
 // @ts-check
+
+const isGithubActions = process.env.GITHUB_ACTIONS === 'true'
+
 /** @type {Partial<import("typedoc").TypeDocOptions>} */
 const config = {
   name: 'TypeDoc Example',
   entryPoints: ['./src'],
   sort: ['source-order'],
   categorizeByGroup: false,
+  out: '../../docs/typedoc-default',
+  basePath: ['.', isGithubActions && 'typedoc-unhoax-theme', 'typedoc-default'].filter(Boolean).join('/'),
   navigation: {
     compactFolders: true,
     includeCategories: true,
     excludeReferences: true,
     includeGroups: false,
   },
-  plugin: ['../lib/index.js'],
+  plugin: ['../../lib/index.js'],
   visibilityFilters: {},
   searchCategoryBoosts: {
     Component: 2,
