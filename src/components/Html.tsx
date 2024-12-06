@@ -1,4 +1,4 @@
-import { JSX, PageEvent, Reflection, RenderTemplate } from 'typedoc'
+import { JSX, PageEvent, Reflection, ReflectionKind, RenderTemplate } from 'typedoc'
 import { UnhoaxThemeContext } from '../ThemeContext.js'
 
 type Props = {
@@ -85,10 +85,14 @@ export function Html({ context, template, props }: Props) {
         <div class='overlay' />
         {context.hook('body.end', context)}
 
+        <script>
+          <JSX.Raw html={`window.ReflectionKind=${JSON.stringify(ReflectionKind)}`} />
+        </script>
         <script
           type='module'
           src={context.relativeURL('assets/init-app.js', true)}
         />
+
         {/* <script
           defer
           async

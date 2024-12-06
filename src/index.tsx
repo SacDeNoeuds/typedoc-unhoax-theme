@@ -7,7 +7,9 @@ export function load(app: Application) {
 
   app.on('bootstrapEnd', () => {
     if (app.options.isSet('theme') && app.options.getValue('theme') !== 'unhoax') {
-      return app.logger.warn(`The theme'unhoax' is not used because another theme (${app.options.getValue('theme')}) was specified!`)
+      return app.logger.warn(
+        `The theme'unhoax' is not used because another theme (${app.options.getValue('theme')}) was specified!`,
+      )
     }
 
     app.options.setValue('theme', 'unhoax')

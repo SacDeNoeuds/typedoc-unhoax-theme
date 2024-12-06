@@ -28,6 +28,7 @@
     "url": "https://github.com/SacDeNoeuds/typedoc-unhoax-theme"
   },
   "devDependencies": {
+    "@types/lunr": "^2.3.7",
     "@types/node": "^22.10.1",
     "prettier": "^3.4.2",
     "typescript": "^5.7.2"

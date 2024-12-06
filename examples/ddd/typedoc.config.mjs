@@ -19,6 +19,8 @@ const config = {
   },
   plugin: ['../../lib/index.js'],
   visibilityFilters: {},
+  searchInComments: true,
+  searchInDocuments: true,
   searchCategoryBoosts: {
     'Use Case': 2,
     'Entity': 1.2,

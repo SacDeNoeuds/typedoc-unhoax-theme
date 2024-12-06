@@ -76,7 +76,29 @@ export class UnhoaxThemeContext extends DefaultThemeRenderContext {
     return (
       <footer class='page-footer'>
         {this.hook('footer.begin', this)}
-        Built with TypeDoc with the Unhoax Theme 🤓&nbsp;–&nbsp;Copyright {new Date().getFullYear()}
+        <div class='footer-content'>
+          <select id='theme-select'>
+            <option value='light'>
+              {'☀️'}
+              &nbsp; &nbsp;
+              {this.i18n.theme_light()}
+            </option>
+            <option value='dark'>
+              {'🌙'}
+              &nbsp; &nbsp;
+              {this.i18n.theme_dark()}
+            </option>
+          </select>
+
+          <div>TypeDoc 🤓 Unhoax Theme</div>
+        </div>
+
+        <hr />
+
+        <small class='copyright'>
+          <span>Made with ❤️ by SacNoeuds</span>
+          <span>Copyright {new Date().getFullYear()}</span>
+        </small>
         {this.hook('footer.end', this)}
       </footer>
     )

@@ -1,4 +1,5 @@
 import { initPageContentNavFromHeadings } from './init-page-content-nav.js'
+import { initSearch } from './init-search.js'
 
 function initTheme() {
   const root = document.documentElement
@@ -38,6 +39,7 @@ function main() {
   initTheme()
   listenToCopyButtonClicks()
   initPageContentNavFromHeadings()
+  initSearch()
 }
 
 main()
