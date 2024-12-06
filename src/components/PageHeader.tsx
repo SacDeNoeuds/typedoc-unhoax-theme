@@ -1,6 +1,5 @@
 import { JSX } from 'typedoc'
 import { UnhoaxThemeContext } from '../ThemeContext.js'
-import { Dropdown } from './Dropdown.js'
 
 type Props = {
   context: UnhoaxThemeContext
@@ -28,12 +27,20 @@ export function PageHeader({ context }: Props) {
           </div>
         )}
 
-        <Dropdown
-          trigger={<button type='button'>Settings</button>}
-          overlayClass='settings-overlay'
-        >
-          {context.settings()}
-        </Dropdown>
+        <div>
+          <select id='theme-select'>
+            <option value='light'>
+              {'☀️'}
+              &nbsp; &nbsp;
+              {context.i18n.theme_light()}
+            </option>
+            <option value='dark'>
+              {'🌙'}
+              &nbsp; &nbsp;
+              {context.i18n.theme_dark()}
+            </option>
+          </select>
+        </div>
 
         <label
           for='site-nav-opened'

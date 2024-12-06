@@ -11,14 +11,9 @@
   --radius: 0.5rem;
   --border-thin-size: 1px;
   --border-thick-size: 2px;
-  --shadow: 0 0 6px -3px rgba(0, 0, 0, 0.5);
 
   /* palette */
   --green: #1ba673;
-  --blue-dark: #003eaa;
-  --blue-dark: #004ca3;
-  --blue: #0060df;
-  --blue-light: #3772cf;
   --purple: #8250df;
   --transparent-blue: #e0efff;
   --transparent-blue: #85ceff1a;
@@ -31,46 +26,45 @@
   --green: #1ba673;
   --green-transparent: rgba(27,166,115,.125);
   
-  --border-grey: #e5e7eb;
   /* --twoslash-tag-bg: rgba(55,114,207,.125); */
   /* --color-ts-function: var(--dark-blue); */
   /* --color-link: var(--dark-blue); */
   /* --color-accent: var(--border-grey); */
-  /* --color-ts-interface: var(--green); */
-
-  /* --color-background: #fafafa; */
-  --color-background: #fff;
-  --color-text: #15141A;
-  --color-text-light: #5B5B66;
+  /* --color-ts-interface: var(--green); */  
   
   --color-background-secondary: var(--color-background);
   --color-text-aside: var(--color-text-light);
 
   --default-transition: transform 0.15s ease-in-out, background-color 0.15s ease-in-out, color 0.15s ease-in-out;
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
+  &[data-theme="light"] {
+    --blue-dark: #003eaa;
+    --blue-dark: #004ca3;
+    --blue: #0060df;
+    --blue-light: #3772cf;
+    --shadow: 0 0 6px -3px rgba(0, 0, 0, 0.5);
+    --border-grey: #e5e7eb;
+  
+    --color-background: #fff;
+    --color-text: #15141A;
+    --color-text-light: #5B5B66;
+  
+    color-scheme: light;
+  }
+
+  &[data-theme="dark"] {
     --blue: #1aa3ff;
     --blue-light: #004ca3;
     --blue-dark: #3772cf;
     --shadow: 0 0 6px -3px rgba(255, 255, 255, 0.5);
     --border-grey: #ffffff1a;
+  
     --color-text: #e2e8f0;
     --color-text-light: #a3a3a3;
     --color-background: #111111;
+  
+    color-scheme: dark;
   }
-}
-
-:root[data-theme="dark"] {
-  --blue: #1aa3ff;
-  --blue-light: #004ca3;
-  --blue-dark: #3772cf;
-  --shadow: 0 0 6px -3px rgba(255, 255, 255, 0.5);
-  --border-grey: #ffffff1a;
-  --color-text: #e2e8f0;
-  --color-text-light: #a3a3a3;
-  --color-background: #111111;
 }
 
 @layer reset {

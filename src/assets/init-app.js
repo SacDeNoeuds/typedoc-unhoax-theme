@@ -1,10 +1,14 @@
 function initTheme() {
-  document.documentElement.dataset.theme =
-    localStorage.getItem('typedoc-theme') || 'os'
-  const element = document.getElementById('theme-select')
-  element.onchange = () => {
-    document.documentElement.dataset.theme = element.value
-    localStorage.setItem('typedoc-theme', element.value)
+  const root = document.documentElement
+  const select = document.getElementById('theme-select')
+  const preferredScheme =
+    window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+
+  root.dataset.theme = select.value = localStorage.getItem('typedoc-theme') || preferredScheme
+
+  select.onchange = () => {
+    root.dataset.theme = select.value
+    localStorage.setItem('typedoc-theme', select.value)
   }
 }
 
