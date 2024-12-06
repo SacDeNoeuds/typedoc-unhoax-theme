@@ -627,7 +627,7 @@
   #search-results .nav-tree {
     text-align: left;
     display: grid;
-    grid-template-columns: min-content min-content auto;
+    grid-template-columns: max-content max-content auto;
     justify-content: flex-start;
     align-items: center;
     gap: 0 var(--space-m);
