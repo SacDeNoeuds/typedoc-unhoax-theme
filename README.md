@@ -18,12 +18,13 @@ There is no particular configuration for this plugin, it is mainly a theme.
 
 I added the default [TypeDoc Example](https://sacdenoeuds.github.io/typedoc-unhoax-theme/example/) and another one of my own [here](https://sacdenoeuds.github.io/typedoc-unhoax-theme/example-ddd/).
 
-## Developing
+## Contributing
 
 ```sh
 npm ci
+npm run install-examples # runs `npm ci` in examples folders.
 npm run debug # builds the project and the examples
 
 # hosting the example:
-npx http-server -p 8900 ./example/docs
+npx http-server -p 8900 ./demo
 ```
