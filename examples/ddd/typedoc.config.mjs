@@ -8,7 +8,7 @@ const config = {
   entryPoints: ['./src/auth', './src/grocery-list', './src/library/*'],
   categorizeByGroup: false,
   sortEntryPoints: true,
-  out: '../../docs/ddd',
+  out: '../../demo/ddd',
   basePath: ['.', isGithubActions && 'typedoc-unhoax-theme', 'ddd'].filter(Boolean).join('/'),
   categoryOrder: ['Use Case', 'Event', 'Entity', 'Error'],
   navigation: {

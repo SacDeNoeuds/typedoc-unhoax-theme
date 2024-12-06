@@ -8,7 +8,7 @@ const config = {
   entryPoints: ['./src'],
   sort: ['source-order'],
   categorizeByGroup: false,
-  out: '../../docs/typedoc-default',
+  out: '../../demo/typedoc-default',
   basePath: ['.', isGithubActions && 'typedoc-unhoax-theme', 'typedoc-default'].filter(Boolean).join('/'),
   navigation: {
     compactFolders: true,
