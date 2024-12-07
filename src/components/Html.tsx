@@ -1,5 +1,6 @@
 import { JSX, PageEvent, Reflection, ReflectionKind, RenderTemplate } from 'typedoc'
 import { UnhoaxThemeContext } from '../ThemeContext.js'
+import path from 'node:path'
 
 type Props = {
   context: UnhoaxThemeContext
@@ -8,6 +9,8 @@ type Props = {
 }
 export function Html({ context, template, props }: Props) {
   const favicon = context.options.getValue('favicon')
+  const relativeToRoot = path.relative(process.cwd(), context.options.getValue('basePath'))
+  const basePath = '/' + relativeToRoot + (relativeToRoot.endsWith('/') ? '' : '/')
   return (
     <html lang={context.options.getValue('lang')}>
       <head>
@@ -86,7 +89,8 @@ export function Html({ context, template, props }: Props) {
         {context.hook('body.end', context)}
 
         <script>
-          <JSX.Raw html={`window.ReflectionKind=${JSON.stringify(ReflectionKind)}`} />
+          <JSX.Raw html={`window.ReflectionKind=${JSON.stringify(ReflectionKind)}\n`} />
+          <JSX.Raw html={`window.basePath=${JSON.stringify(basePath)}`} />
         </script>
         <script
           type='module'

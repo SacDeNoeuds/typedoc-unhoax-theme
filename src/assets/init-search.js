@@ -115,8 +115,12 @@ async function searchResults(query) {
     )
 
     const kindName = kindById[row.kind]
+    /** @type {string} */
+    // @ts-ignore
+    const basePath = window.basePath
+    const rowUrl = window.location.origin + basePath + row.url
 
-    const option = h.a({ class: 'search-result nav-leaf', href: row.url }, [
+    const option = h.a({ class: 'search-result nav-leaf', href: rowUrl }, [
       h.span({}, nameElement),
       h.small({ class: 'parent' }, row.parent || 'N/A'),
       h.small(
