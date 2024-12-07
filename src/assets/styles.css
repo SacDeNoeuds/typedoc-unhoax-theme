@@ -141,13 +141,16 @@
   summary {
     user-select: none;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--space-s);
-    margin-bottom: var(--space-y, var(--space-s));
+    
+    &[class] {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-s);
+      margin-bottom: var(--space-y, var(--space-s));
 
-    &::marker { content: none; }
+      &::marker { content: none; }
+    }
   }
   details .with-chevron {
     flex: 1;
@@ -168,6 +171,7 @@
   }
 
   b { font-weight: bold; }
+  strong { font-weight: 500; }
   
   button {
     user-select: none;
@@ -685,8 +689,8 @@
 }
 
 @layer typedoc {
-  .tsd-alert {
-    --alert-color: unset;
+  .tsd-alert, blockquote {
+    --alert-color: var(--border-grey);
 
     padding: var(--space-s);
     padding-inline-start: var(--space-l);
