@@ -40,6 +40,24 @@ function listenToCopyButtonClicks() {
 /** @type {string} */
 const basePath = window.basePath
 
+function closeMobileMenuOnBodyClick() {
+  /** @type {HTMLInputElement | null} */
+  const mobileNavOpenedInput = document.getElementById('mobile-nav-opened')
+  /** @type {HTMLElement | null} */
+  const pageContent = document.querySelector('.page-content')
+  if (!mobileNavOpenedInput || !pageContent) return
+
+  pageContent.addEventListener(
+    'click',
+    (event) => {
+      if (!mobileNavOpenedInput.checked) return
+      event.preventDefault()
+      mobileNavOpenedInput.checked = false
+    },
+    { capture: true },
+  )
+}
+
 function main() {
   initTheme()
   listenToCopyButtonClicks()
@@ -49,6 +67,7 @@ function main() {
     ? initPageContentNavFromAnchors()
     : initPageContentNavFromSectionHeadings()
   initSearch()
+  closeMobileMenuOnBodyClick()
 }
 
 main()
