@@ -34,13 +34,13 @@ function initAnchorLinks(
  * @returns {HTMLUListElement}
  */
 function setupPageContentNav() {
-  const pageContentNav = document.querySelector('.page-content-nav')
-  const ul = pageContentNav.querySelector('ul') ?? h.ul({ class: 'nav-tree' })
+  const pageToc = document.querySelector('.page-toc')
+  const ul = pageToc.querySelector('ul') ?? h.ul({ class: 'nav-tree' })
 
   // the page content is empty, let’s add content
-  if (!pageContentNav.textContent.trim()) {
-    pageContentNav.appendChild(h.h2({}, 'On This Page'))
-    pageContentNav.appendChild(ul)
+  if (!pageToc.textContent.trim()) {
+    pageToc.appendChild(h.h2({}, 'On This Page'))
+    pageToc.appendChild(ul)
   }
   return ul
 }

@@ -64,16 +64,20 @@ export function Html({ context, template, props }: Props) {
           hidden
         />
         <div class='page-layout'>
-          <aside class='site-nav'>
-            {context.hook('sidebar.begin', context)}
-            {context.sidebar(props)}
-            {context.hook('sidebar.end', context)}
+          <aside class='site-nav-wrapper'>
+            <div class='site-nav'>
+              {context.hook('sidebar.begin', context)}
+              {context.sidebar(props)}
+              {context.hook('sidebar.end', context)}
+            </div>
           </aside>
 
-          <aside class='page-content-nav'>
-            {context.hook('pageSidebar.begin', context)}
-            {context.pageSidebar(props)}
-            {context.hook('pageSidebar.end', context)}
+          <aside class='page-toc-wrapper'>
+            <div class='page-toc'>
+              {context.hook('pageSidebar.begin', context)}
+              {context.pageSidebar(props)}
+              {context.hook('pageSidebar.end', context)}
+            </div>
           </aside>
 
           <main class='page-content'>
