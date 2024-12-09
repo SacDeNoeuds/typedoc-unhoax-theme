@@ -1,4 +1,7 @@
-import { initPageContentNavFromHeadings } from './init-page-content-nav.js'
+import {
+  initPageContentNavFromAnchors,
+  initPageContentNavFromSectionHeadings,
+} from './init-page-content-nav.js'
 import { initSearch } from './init-search.js'
 
 function initTheme() {
@@ -34,11 +37,17 @@ function listenToCopyButtonClicks() {
     }
   }
 }
+/** @type {string} */
+const basePath = window.basePath
 
 function main() {
   initTheme()
   listenToCopyButtonClicks()
-  initPageContentNavFromHeadings()
+  const isHome = location.pathname === basePath
+  const isDocument = location.pathname.includes('/documents/')
+  isHome || isDocument
+    ? initPageContentNavFromAnchors()
+    : initPageContentNavFromSectionHeadings()
   initSearch()
 }
 

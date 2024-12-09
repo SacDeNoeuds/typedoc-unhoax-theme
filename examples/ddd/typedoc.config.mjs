@@ -9,7 +9,7 @@ const config = {
   categorizeByGroup: false,
   sortEntryPoints: true,
   out: '../../demo/ddd',
-  basePath: ['.', isGithubActions && 'typedoc-unhoax-theme', 'ddd'].filter(Boolean).join('/'),
+  basePath: ['.', isGithubActions && 'typedoc-unhoax-theme', 'demo/ddd'].filter(Boolean).join('/'),
   categoryOrder: ['Use Case', 'Event', 'Entity', 'Error'],
   navigation: {
     compactFolders: true,

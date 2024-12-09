@@ -1,35 +1,34 @@
 import { h } from './h.js'
 
-// export function initPageContentNavFromAnchors() {
-//   const anchors = document.querySelectorAll('.anchor[id]')
-//   const tsdAnchors = document.querySelectorAll('.tsd-anchor[id]')
+export function initPageContentNavFromAnchors() {
+  const anchors = document.querySelectorAll('.anchor[id]')
+  const tsdAnchors = document.querySelectorAll('.tsd-anchor[id]')
 
-//   const ul = setupPageContentNav()
-//   initAnchorLinks('tsd', ul, tsdAnchors)
-//   initAnchorLinks('unhoax', ul, anchors)
-// }
+  const ul = setupPageContentNav()
+  initAnchorLinks('tsd', ul, tsdAnchors)
+  initAnchorLinks('unhoax', ul, anchors)
+}
 
-// function initAnchorLinks(
-//   /** @type {'tsd' | 'unhoax'} */ type,
-//   /** @type {NodeList<Element>} */ ul,
-//   /** @type {NodeList<Element>} */ anchors,
-// ) {
-//   for (const anchor of anchors) {
-//     const heading =
-//       type === 'tsd'
-//         ? anchor.nextElementSibling
-//         : anchor.nextElementSibling.querySelector('a[href]')
-//     console.info('anchor', type, anchor.id, heading?.textContent)
-//     if (!heading) continue
-//     const level = Number(heading.tagName.slice(1)) || undefined // avoid NaN
-//     const anchorElement = renderAnchorLink({
-//       level,
-//       targetId: anchor.id,
-//       heading: heading.textContent,
-//     })
-//     ul.appendChild(h.li({}, anchorElement))
-//   }
-// }
+function initAnchorLinks(
+  /** @type {'tsd' | 'unhoax'} */ type,
+  /** @type {NodeList<Element>} */ ul,
+  /** @type {NodeList<Element>} */ anchors,
+) {
+  for (const anchor of anchors) {
+    const heading =
+      type === 'tsd'
+        ? anchor.nextElementSibling
+        : anchor.nextElementSibling.querySelector('a[href]')
+    if (!heading) continue
+    const level = Number(heading.tagName.slice(1)) || undefined // avoid NaN
+    const anchorElement = renderAnchorLink({
+      level,
+      targetId: anchor.id,
+      heading: heading.textContent,
+    })
+    ul.appendChild(h.li({}, anchorElement))
+  }
+}
 
 /**
  * @returns {HTMLUListElement}
@@ -46,7 +45,7 @@ function setupPageContentNav() {
   return ul
 }
 
-export function initPageContentNavFromHeadings() {
+export function initPageContentNavFromSectionHeadings() {
   const selector = '.page-content section :is(h2, h3, h4, h5, h6):first-child'
   const headings = document.querySelectorAll(selector)
 
@@ -74,11 +73,6 @@ function renderAnchorLink({ level = 0, targetId, heading }) {
     { href: `#${targetId}`, class: 'page-content-anchor-link' },
     [h.small({}, ['#'.repeat(level)]), ' ', heading],
   )
-  // anchor.onclick = () => {
-  //   document
-  //     .getElementById(targetId)
-  //     .scrollIntoView({ behavior: 'smooth', block: 'start' })
-  // }
   return anchor
 }
 

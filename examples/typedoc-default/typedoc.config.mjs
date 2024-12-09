@@ -4,7 +4,7 @@ const isGithubActions = process.env.GITHUB_ACTIONS === 'true'
 
 /** @type {Partial<import("typedoc").TypeDocOptions>} */
 const config = {
-  basePath: ['.', isGithubActions && 'typedoc-unhoax-theme', 'typedoc-default'].filter(Boolean).join('/'),
+  basePath: ['.', isGithubActions && 'typedoc-unhoax-theme', 'demo/typedoc-default'].filter(Boolean).join('/'),
   out: '../../demo/typedoc-default',
   cleanOutputDir: true,
 
