@@ -148,9 +148,9 @@
       justify-content: space-between;
       gap: var(--space-s);
       margin-bottom: var(--space-y, var(--space-s));
-
-      &::marker { content: none; }
     }
+
+    &:is([class], :has(.with-chevron))::marker { content: none; }
   }
   details .with-chevron {
     flex: 1;
