@@ -323,12 +323,12 @@
       grid-template-areas:
         "site-nav main"
         "page-nav main";
-      grid-template-columns: min-content minmax(0, 1fr);
+      grid-template-columns: 13rem minmax(0, 1fr);
       grid-template-rows: min-content 1fr;
     }
   }
   
-  @media (width < 600px) {
+  @media (width < 700px) {
     /* Idk yet. */
     .page-header .mobile-nav-burger-trigger {
       display: flex;
