@@ -9,6 +9,10 @@
   ],
   "main": "lib/index.js",
   "module": "lib/index.js",
+  "keywords": [
+    "typedoc-plugin",
+    "typedoc-theme"
+  ],
   "scripts": {
     "prebuild": "rm -rf ./lib",
     "build": "tsc -P tsconfig.json",
