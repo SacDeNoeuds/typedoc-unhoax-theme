@@ -30,7 +30,8 @@ const config = {
   //   'Entity': 1.2,
   // },
   navigationLinks: {
-    Docs: 'https://typedoc.org',
+    TypeDoc: 'https://typedoc.org',
+    GitHub: 'https://github.com/SacDeNoeuds/typedoc-unhoax-theme',
   },
   highlightLanguages: ['typescript', 'tsx', 'css', 'json', 'jsonc', 'python', 'yaml', 'markdown'],
   cleanOutputDir: true,

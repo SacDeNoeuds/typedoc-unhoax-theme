@@ -21,9 +21,8 @@ const config = {
     Classes: 1.5,
   },
   navigationLinks: {
-    Docs: 'https://typedoc.org',
-    API: 'https://typedoc.org/api/index.html',
-    GitHub: 'https://github.com/TypeStrong/typedoc',
+    TypeDoc: 'https://typedoc.org',
+    GitHub: 'https://github.com/SacDeNoeuds/typedoc-unhoax-theme',
   },
   highlightLanguages: ['typescript', 'tsx', 'css', 'json', 'jsonc', 'python', 'yaml', 'markdown'],
   markdownItOptions: {
