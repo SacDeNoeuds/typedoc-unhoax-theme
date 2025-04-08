@@ -1,13 +1,9 @@
-import { JSX, SignatureReflection } from 'typedoc'
+import { i18n, JSX, SignatureReflection } from 'typedoc'
 import { UnhoaxThemeContext } from '../ThemeContext.js'
 import { hasTypeParameters } from '../utils.js'
 import { SignatureParameter } from './SignatureParameter.js'
 
-type Props = {
-  context: UnhoaxThemeContext
-  props: SignatureReflection
-  hideSources?: boolean
-}
+type Props = { context: UnhoaxThemeContext; props: SignatureReflection; hideSources?: boolean }
 
 export function MemberSignatureBody({ context, props, hideSources = false }: Props) {
   const returnsTag = props.comment?.getTag('@returns')
@@ -21,7 +17,7 @@ export function MemberSignatureBody({ context, props, hideSources = false }: Pro
 
       {props.parameters && props.parameters.length > 0 && (
         <div class='parameters'>
-          <h4>{context.i18n.kind_plural_parameter()}</h4>
+          <h4>{i18n.kind_plural_parameter()}</h4>
           <ul class='parameter-list'>
             {props.parameters.map((item) => (
               <li>
@@ -31,7 +27,7 @@ export function MemberSignatureBody({ context, props, hideSources = false }: Pro
                 />
                 {context.commentSummary(item)}
                 {context.commentTags(item)}
-                {context.typeDetailsIfUseful(item.type)}
+                {context.typeDetailsIfUseful(item, item.type)}
               </li>
             ))}
           </ul>
@@ -40,10 +36,10 @@ export function MemberSignatureBody({ context, props, hideSources = false }: Pro
       {props.type && (
         <>
           <h4 class='tsd-returns-title'>
-            {context.i18n.theme_returns()} {context.type(props.type)}
+            {i18n.theme_returns()} {context.type(props.type)}
           </h4>
           {returnsTag && <JSX.Raw html={context.markdown(returnsTag.content)} />}
-          {context.typeDetailsIfUseful(props.type)}
+          {context.typeDetailsIfUseful(props, props.type)}
         </>
       )}
 

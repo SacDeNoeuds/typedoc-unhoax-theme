@@ -26,6 +26,6 @@ export class UnhoaxTheme extends DefaultTheme {
   }
 
   getRenderContext(pageEvent: PageEvent<Reflection>) {
-    return new UnhoaxThemeContext(this, pageEvent, this.application.options)
+    return new UnhoaxThemeContext(this.router, this, pageEvent, this.application.options)
   }
 }

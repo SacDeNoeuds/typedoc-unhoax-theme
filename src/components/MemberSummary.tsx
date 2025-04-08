@@ -1,19 +1,9 @@
-import {
-  JSX,
-  DefaultThemeRenderContext,
-  DeclarationReflection,
-  DocumentReflection,
-  ReferenceReflection,
-  Reflection,
-} from 'typedoc'
+import { JSX, DeclarationReflection, DocumentReflection, ReferenceReflection, Reflection } from 'typedoc'
 import { UnhoaxThemeContext } from '../ThemeContext.js'
-import { AnchorIconLink } from './AnchorIconLink.js'
 import { KindIcon } from './KindIcon.js'
+import { AnchorIconLink } from './AnchorIconLink.js'
 
-type Props = {
-  context: UnhoaxThemeContext
-  member: DeclarationReflection | DocumentReflection
-}
+type Props = { context: UnhoaxThemeContext; member: DeclarationReflection | DocumentReflection }
 
 export function MemberSummary({ context, member }: Props) {
   const targetElementId = context.slugger.slug(member.name)
@@ -66,15 +56,7 @@ export function MemberSummary({ context, member }: Props) {
   )
 }
 
-function ReferenceMemberName({
-  context,
-  member,
-  anchor,
-  target,
-}: Props & {
-  anchor: string
-  target: Reflection
-}) {
+function ReferenceMemberName({ context, member, anchor, target }: Props & { anchor: string; target: Reflection }) {
   return (
     <span class='member-summary-name'>
       {context.icons[target.kind]()}

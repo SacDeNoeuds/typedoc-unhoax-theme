@@ -1,10 +1,8 @@
-import { JSX, ReflectionKind } from 'typedoc'
+import { i18n, JSX, ReflectionKind } from 'typedoc'
 import { UnhoaxThemeContext } from '../ThemeContext.js'
 import { CrossIcon } from '../icons/cross.js'
 
-type Props = {
-  context: UnhoaxThemeContext
-}
+type Props = { context: UnhoaxThemeContext }
 
 export function PageHeader({ context }: Props) {
   const navigationLinks = Object.entries(context.options.getValue('navigationLinks'))
@@ -69,7 +67,7 @@ export function PageHeader({ context }: Props) {
           <label
             for='mobile-nav-opened'
             class='mobile-nav-burger-trigger'
-            aria-label={context.i18n.theme_menu()}
+            aria-label={i18n.theme_menu()}
           >
             {context.icons.menu()}
           </label>

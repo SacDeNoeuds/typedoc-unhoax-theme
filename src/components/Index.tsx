@@ -1,4 +1,4 @@
-import { ContainerReflection, JSX, ReflectionCategory, ReflectionGroup } from 'typedoc'
+import { ContainerReflection, i18n, JSX, ReflectionCategory, ReflectionGroup } from 'typedoc'
 import { UnhoaxThemeContext } from '../ThemeContext.js'
 
 function renderCategory(context: UnhoaxThemeContext, item: ReflectionCategory | ReflectionGroup, prependName = '') {
@@ -26,10 +26,7 @@ function renderCategory(context: UnhoaxThemeContext, item: ReflectionCategory | 
   )
 }
 
-type Props = {
-  context: UnhoaxThemeContext
-  props: ContainerReflection
-}
+type Props = { context: UnhoaxThemeContext; props: ContainerReflection }
 export function Index({ context, props }: Props) {
   const groups = props.groups ?? []
   const categories = props.categories ?? []
@@ -42,21 +39,9 @@ export function Index({ context, props }: Props) {
           : renderCategory(context, item)
       })
 
-  // Accordion is only needed if any children don't have their own document.
-  const shouldWrapInAccordion = [...groups, ...categories].some((category) => !category.allChildrenHaveOwnDocument())
-  content = shouldWrapInAccordion ? (
-    <details open>
-      <summary>
-        <h2 class='with-chevron'>
-          {context.i18n.theme_index()}
-          {context.icons.chevronDown()}
-        </h2>
-      </summary>
-      {content}
-    </details>
-  ) : (
+  content = (
     <>
-      <h3>{context.i18n.theme_index()}</h3>
+      <h3>{i18n.theme_index()}</h3>
       {content}
     </>
   )

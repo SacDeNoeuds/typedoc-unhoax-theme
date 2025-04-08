@@ -6,17 +6,18 @@
   "license": "Apache-2.0",
   "author": "TypeDoc contributors",
   "scripts": {
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "build": "typedoc"
   },
   "dependencies": {
-    "@types/lodash": "^4.17.5",
-    "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
+    "@types/lodash": "^4.17.16",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.1",
     "lodash": "^4.17.21",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
   },
   "devDependencies": {
-    "typescript": "^5.4.5"
+    "typescript": "^5.8.3"
   }
 }

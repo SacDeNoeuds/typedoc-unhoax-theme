@@ -1,6 +1,7 @@
 import {
   ContainerReflection,
   DeclarationReflection,
+  i18n,
   JSX,
   PageEvent,
   ReferenceReflection,
@@ -12,10 +13,7 @@ import {
 import { UnhoaxThemeContext } from '../ThemeContext.js'
 import { hasTypeParameters } from '../utils.js'
 
-type Props = {
-  context: UnhoaxThemeContext
-  props: PageEvent<ContainerReflection>
-}
+type Props = { context: UnhoaxThemeContext; props: PageEvent<ContainerReflection> }
 export function ReflectionTemplate({ context, props }: Props) {
   if (
     props.model.kindOf(ReflectionKind.TypeAlias | ReflectionKind.Variable) &&
@@ -45,7 +43,7 @@ export function ReflectionTemplate({ context, props }: Props) {
 
           {!!props.model.implementedTypes && (
             <section>
-              <h4>{context.i18n.theme_implements()}</h4>
+              <h4>{i18n.theme_implements()}</h4>
               <ul class='hierarchy'>
                 {props.model.implementedTypes.map((item) => (
                   <li>{context.type(item)}</li>
@@ -55,7 +53,7 @@ export function ReflectionTemplate({ context, props }: Props) {
           )}
           {!!props.model.implementedBy && (
             <section>
-              <h4>{context.i18n.theme_implemented_by()}</h4>
+              <h4>{i18n.theme_implemented_by()}</h4>
               <ul class='hierarchy'>
                 {props.model.implementedBy.map((item) => (
                   <li>{context.type(item)}</li>
@@ -66,7 +64,7 @@ export function ReflectionTemplate({ context, props }: Props) {
           {!!props.model.signatures?.length && <section>{context.memberSignatures(props.model)}</section>}
           {!!props.model.indexSignatures?.length && (
             <section class={`tsd-panel ${context.getReflectionClasses(props.model)}`}>
-              <h4 class='tsd-before-signature'>{context.i18n.theme_indexable()}</h4>
+              <h4 class='tsd-before-signature'>{i18n.theme_indexable()}</h4>
               <ul class='tsd-signatures'>
                 {props.model.indexSignatures.map((index) => (
                   <IndexSignature
@@ -102,7 +100,7 @@ function IndexSignature({ context, index }: { context: UnhoaxThemeContext; index
       </div>
       {context.commentSummary(index)}
       {context.commentTags(index)}
-      {context.typeDetailsIfUseful(index.type)}
+      {context.typeDetailsIfUseful(index, index.type)}
     </li>
   )
 }

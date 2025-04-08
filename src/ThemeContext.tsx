@@ -12,6 +12,7 @@ import {
   DeclarationReflection,
   RenderTemplate,
   SignatureReflection,
+  i18n,
 } from 'typedoc'
 import { SearchIcon } from './icons/search.js'
 import { AnchorIcon } from './icons/anchor.js'
@@ -41,10 +42,7 @@ export class UnhoaxThemeContext extends DefaultThemeRenderContext {
     folder: () => <>FOLDER</>,
   }
   get icons(): DefaultThemeRenderContext['icons'] {
-    return {
-      ...this.theme.icons,
-      ...this.customIcons,
-    }
+    return { ...this.theme.icons, ...this.customIcons }
   }
 
   get projectDisplayName() {
@@ -81,12 +79,12 @@ export class UnhoaxThemeContext extends DefaultThemeRenderContext {
             <option value='light'>
               {'☀️'}
               &nbsp; &nbsp;
-              {this.i18n.theme_light()}
+              {i18n.theme_light()}
             </option>
             <option value='dark'>
               {'🌙'}
               &nbsp; &nbsp;
-              {this.i18n.theme_dark()}
+              {i18n.theme_dark()}
             </option>
           </select>
 
@@ -199,18 +197,18 @@ export class UnhoaxThemeContext extends DefaultThemeRenderContext {
     const renderTitle = props.model.kind !== ReflectionKind.Document
     return (
       <div class='page-content-header'>
-        {renderBreadcrumbs && <ul class='breadcrumb'>{this.breadcrumb(props.model)}</ul>}
+        {renderBreadcrumbs && <ul class='breadcrumb'>{this.breadcrumbs(props.model)}</ul>}
         {renderTitle && <h1>{props.model.name}</h1>}
       </div>
     )
   }
 
-  override breadcrumb = (props: Reflection, isFirst = true): JSX.Element | undefined => {
+  override breadcrumbs = (props: Reflection, isFirst = true): JSX.Element => {
     return (
       <>
-        {props.parent && this.breadcrumb(props.parent, false)}
+        {props.parent && this.breadcrumbs(props.parent, false)}
         {props.parent && <span>/</span>}
-        <li>{!isFirst && props.url ? <a href={this.urlTo(props)}>{props.name}</a> : <span>{props.name}</span>}</li>
+        <li>{!isFirst ? <a href={this.urlTo(props)}>{props.name}</a> : <span>{props.name}</span>}</li>
       </>
     )
   }
