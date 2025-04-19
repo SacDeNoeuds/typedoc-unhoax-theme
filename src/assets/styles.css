@@ -1,11 +1,11 @@
 @layer reset, global, typedoc, layout, components;
 
 :root {
-  --space-xs: 0.125rem;
-  --space-s: 0.25rem;
-  --space-m: 0.5rem;
-  --space-l: 0.75rem;
-  --space-xl: 1rem;
+  --space-xs: 0.25rem;
+  --space-s: 0.5rem;
+  --space-m: 0.75rem;
+  --space-l: 1rem;
+  --space-xl: 1.25rem;
   --space-xxl: 1.5rem;
 
   --radius: 0.5rem;
@@ -44,8 +44,8 @@
 
 :root[data-theme="light"] {
   --blue-dark: #003eaa;
-  --blue-dark: #004ca3;
-  --blue: #0060df;
+  --blue: #004ca3;
+  /* --blue: #0060df; */
   --blue-light: #3772cf;
   --shadow: 0 0 6px -3px rgba(0, 0, 0, 0.5);
   --border-grey: #e5e7eb;
@@ -53,6 +53,8 @@
   --color-background: #fff;
   --color-text: #15141A;
   --color-text-light: #5B5B66;
+  --site-nav-background: #f9f9f9;
+  --code-background: #f9f9f9;
 
   color-scheme: light;
 }
@@ -66,7 +68,9 @@
 
   --color-text: #e2e8f0;
   --color-text-light: #a3a3a3;
-  --color-background: #111111;
+  --color-background: #191919;
+  --site-nav-background: #111111;
+  --code-background: #111111;
 
   color-scheme: dark;
 }
@@ -87,7 +91,7 @@
 @layer global {
   body {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-weight: 200;
+    font-weight: 300;
     color: var(--color-text);
     background: var(--color-background);
   }
@@ -194,13 +198,14 @@
 
   pre {
     position: relative;
-    border: var(--border-thick-size) solid var(--border-grey);
+    border: 0;
     border-radius: var(--radius);
     overflow: clip;
+    background: var(--code-background);
     
     & code {
       display: block;
-      padding: var(--space-m);
+      padding: var(--space-l) var(--space-xl);
       max-inline-size: 100%;
       overflow-x: auto;
       scrollbar-width: thin;
@@ -261,10 +266,16 @@
     grid-template-areas: "site-nav main page-nav";
     grid-template-columns: 25% 50% 25%;
 
-    & > * { padding: var(--space-l); }
+    & > * { padding: var(--space-m); }
     & .site-nav-wrapper { grid-area: site-nav; }
     & .page-toc-wrapper { grid-area: page-nav; }
-    & .page-content { grid-area: main; }
+    & .page-content {
+      grid-area: main;
+      padding-inline: var(--space-xxl);
+    }
+  }
+  .site-nav-wrapper {
+    background: var(--site-nav-background);
   }
 
   /* header */
@@ -293,6 +304,7 @@
     & .header-nav-links a {
       display: inline-block;
       padding: var(--space-m);
+      text-decoration: none;
     }
   }
 
@@ -434,7 +446,7 @@
   }
   
   .nav-tree {
-    padding-inline-start: 0.5em;
+    padding-inline-start: var(--space-l);
     display: flex;
     flex-direction: column;
     list-style-type: none;
@@ -451,7 +463,7 @@
       width: 1px;
       background: var(--border-grey);
       position: absolute;
-      left: 0.125em;
+      left: 0;
       top: var(--spacer);
       z-index: 1;
     }
@@ -750,9 +762,10 @@
 
   .tsd-signature {
     position: relative;
-    border: var(--border-thick-size) solid var(--border-grey);
+    border: 0;
     border-radius: var(--radius);
-    padding: var(--space-m);
+    padding: var(--space-l) var(--space-xl);
+    background: var(--code-background);
     max-inline-size: 100%;
     overflow-x: auto;
     scrollbar-width: thin;
@@ -761,5 +774,19 @@
     display: flex;
     flex-direction: column;
     gap: var(--space-xs);
+  }
+
+  .tsd-type-declaration, .tsd-parameters, .tsd-signatures, .tsd-description > .parameters {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-m);
+  }
+}
+
+@layer components {
+  /* this is an override */
+  .tsd-parameters, .tsd-signatures {
+    list-style: none;
+    padding-inline-start: 0;
   }
 }
