@@ -35,7 +35,8 @@
     "@types/lunr": "^2.3.7",
     "@types/node": "^22.14.0",
     "prettier": "^3.5.3",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "unhoax": "^0.8.0"
   },
   "peerDependencies": {
     "typedoc": "^0.28.0"
