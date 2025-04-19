@@ -18,48 +18,13 @@ There is no particular configuration for this plugin, it is mainly a theme.
 
 ### TypeDoc Default Example
 
-You can check the code [in this repo](./examples/typedoc-default/) and the [full website](https://sacdenoeuds.github.io/typedoc-unhoax-theme/typedoc-default/)
-
-<details>
-  <summary>Desktop Screenshots</summary>
-
-### Home
-
-<img src="examples/typedoc-default-asset-home.png" alt="Default Example / Home" width="100%">
-
-### Document
-
-<img src="examples/typedoc-default-asset-home-document.png" alt="Default Example / Document" width="100%">
-
-### Function
-
-<img src="examples/typedoc-default-asset-home-function.png" alt="Default Example / Function" width="100%">
-</details>
+- ➡️ [Demo Website](https://sacdenoeuds.github.io/typedoc-unhoax-theme/typedoc-default/)
+- ➡️ [Source Code](https://github.com/SacDeNoeuds/typedoc-unhoax-theme/tree/main/examples/typedoc-default)
 
 ### Domain / Use-Case Driven Example
 
-You can check the code [in this repo](./examples/ddd/) and the [full website](https://sacdenoeuds.github.io/typedoc-unhoax-theme/ddd/)
-
-<details>
-  <summary>Desktop Screenshots</summary>
-
-### Use Case
-
-<img src="examples/ddd-asset-use-case.png" alt="DDD / Use Case" width="100%">
-
-### Modules
-
-<img src="examples/ddd-asset-modules.png" alt="DDD / Modules" width="100%">
-
-</details>
-
-<details>
-  <summary>Mobile Screenshots</summary>
-  <p>
-    <img src="examples/ddd-asset-modules-mobile.png" alt="DDD / Modules / Mobile" width="30%">
-    <img src="examples/ddd-asset-module-mobile-menu.png" alt="DDD / Modules / Mobile / menu opened" width="30%">
-  </p>
-</details>
+- ➡️ [Demo Website](https://sacdenoeuds.github.io/typedoc-unhoax-theme/ddd/)
+- ➡️ [Source Code](https://github.com/SacDeNoeuds/typedoc-unhoax-theme/tree/main/examples/ddd)
 
 ## Customizing
 
@@ -67,11 +32,11 @@ Here are the CSS variables you can override using `customCss` typedoc config opt
 
 ```css
 :root {
-  --space-xs: 0.125rem;
-  --space-s: 0.25rem;
-  --space-m: 0.5rem;
-  --space-l: 0.75rem;
-  --space-xl: 1rem;
+  --space-xs: 0.25rem;
+  --space-s: 0.5rem;
+  --space-m: 0.75rem;
+  --space-l: 1rem;
+  --space-xl: 1.25rem;
   --space-xxl: 1.5rem;
 
   --radius: 0.5rem;
@@ -91,21 +56,15 @@ Here are the CSS variables you can override using `customCss` typedoc config opt
   --yellow-transparent: rgba(195, 125, 13, 0.125);
   --green: #1ba673;
   --green-transparent: rgba(27, 166, 115, 0.125);
-
-  /* --twoslash-tag-bg: rgba(55,114,207,.125); */
-  /* --color-ts-function: var(--dark-blue); */
-  /* --color-link: var(--dark-blue); */
-  /* --color-accent: var(--border-grey); */
-  /* --color-ts-interface: var(--green); */
-
   --color-background-secondary: var(--color-background);
   --color-text-aside: var(--color-text-light);
+
+  --default-transition: transform 0.15s ease-in-out, background-color 0.15s ease-in-out, color 0.15s ease-in-out;
 }
 
 :root[data-theme='light'] {
   --blue-dark: #003eaa;
-  --blue-dark: #004ca3;
-  --blue: #0060df;
+  --blue: #004ca3;
   --blue-light: #3772cf;
   --shadow: 0 0 6px -3px rgba(0, 0, 0, 0.5);
   --border-grey: #e5e7eb;
@@ -113,6 +72,8 @@ Here are the CSS variables you can override using `customCss` typedoc config opt
   --color-background: #fff;
   --color-text: #15141a;
   --color-text-light: #5b5b66;
+  --site-nav-background: #f9f9f9;
+  --code-background: #f9f9f9;
 }
 
 :root[data-theme='dark'] {
@@ -124,7 +85,9 @@ Here are the CSS variables you can override using `customCss` typedoc config opt
 
   --color-text: #e2e8f0;
   --color-text-light: #a3a3a3;
-  --color-background: #111111;
+  --color-background: #191919;
+  --site-nav-background: #111111;
+  --code-background: #111111;
 }
 ```
 
