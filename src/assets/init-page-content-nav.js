@@ -2,7 +2,7 @@ import { h } from './h.js'
 
 export function initPageContentNavFromAnchors() {
   const anchors = document.querySelectorAll('.anchor[id]')
-  const tsdAnchors = document.querySelectorAll('.tsd-anchor[id]')
+  const tsdAnchors = document.querySelectorAll('.tsd-anchor-link[id]')
 
   const ul = setupPageContentNav()
   initAnchorLinks('tsd', ul, tsdAnchors)
@@ -17,7 +17,7 @@ function initAnchorLinks(
   for (const anchor of anchors) {
     const heading =
       type === 'tsd'
-        ? anchor.nextElementSibling
+        ? anchor
         : anchor.nextElementSibling.querySelector('a[href]')
     if (!heading) continue
     const level = Number(heading.tagName.slice(1)) || undefined // avoid NaN
@@ -71,7 +71,7 @@ export function initPageContentNavFromSectionHeadings() {
 function renderAnchorLink({ level = 0, targetId, heading }) {
   const anchor = h.a(
     { href: `#${targetId}`, class: 'page-content-anchor-link' },
-    [h.small({}, ['#'.repeat(level)]), ' ', heading],
+    [h.small({}, ['  '.repeat(level)]), ' ', heading],
   )
   return anchor
 }
