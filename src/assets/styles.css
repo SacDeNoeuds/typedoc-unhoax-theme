@@ -389,6 +389,8 @@
     flex-direction: column;
     gap: var(--space-xs);
     white-space: pre;
+    max-block-size: calc(100vb - 3.5rem);
+    overflow-y: scroll;
   }
   .page-content-anchor-link {
     display: flex;
